@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+
+
+    <div id="app">
+
+        <h1>hello</h1>
+        <button @click="getUsersFromDb">GET USERS FROM LOCAL API</button>
+        <span>THE RESULTS WILL BE IN CONSOLE</span>
+        <h2>{{titulo}}</h2>
+
+        <ul>
+            <li v-for="fruta of frutas">
+
+                <input type="number" v-model.number="fruta.cantidad">
+                {{fruta.nombre}}
+                <!-- le decmos al v model que el valor que se va a escribir va ser de tipo numero
+                ya que por defecto es de tipo string-->
+
+                <span v-if="fruta.cantidad === 0">no hay stock</span>
+                <input type="button" value="+" @click="fruta.cantidad++">
+            </li>
+
+        </ul>
+
+        <h5>{{sumFruits}}</h5>
+        <div>
+            <span v-bind:title="titulo">
+                Mueva el mouse sobre mí durante unos segundos
+                para ver mi título enlazado dinámicamente.
+            </span>
+            <br>
+            <span>
+                <input type="text" name="text" placeholder="type a fruit and click the button" v-model="typed_text"
+                    @keyup.enter="addFruit">
+            </span>
+
+            <div>
+                <h3>{{typed_text}}</h3>
+            </div>
+            <div>
+                <input type="button" @click="addFruit" value="click-me">
+                <!-- <button @click="addBlock">click-me</button> -->
+            </div>
+        </div>
+
+        <!-- usando v-bind con clases css -->
+        <hr />
+
+        <div class="p-3 my-2" :class="['text-white', fondo]">
+            <p>
+                Lorem ipsumsssdssssssdsdsdsdssdsdsdsdsssds
+            </p>
+        </div>
+
+        <input type="text" class="form-control my-4" v-model="fondo">
+
+        <div class="p-3 my-2" :class="{'bg-info' : color, 'bg-danger' : !color}">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel atque quia, libero aliquam a enim eligendi
+                fugit iste minima, excepturi molestiae dolore laudantium. Deleniti facere totam consectetur dignissimos
+                blanditiis sequi.
+            </p>
+        </div>
+
+        <button class="btn btn-primary" @click="color=!color">Change color</button>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="./01.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+
+</html>
